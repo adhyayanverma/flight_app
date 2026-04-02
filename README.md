@@ -17,3 +17,9 @@
 2. Run the application:
    ```bash
    python app.py
+
+## Usage
+
+1. Open [http://localhost:5000](http://localhost:5000) in your browser.
+2. Search for flights.
+3. Click on **details** to view flight-specific info.
