@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f3f6fb; margin: 0; padding: 0; color: #1f2937; }
+        .container { max-width: 700px; margin: 2.5rem auto; padding: 1.8rem; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 24px rgba(15, 23, 42, .12); }
+        h2 { margin-top: 0; color: #0b3a67; }
+        .info-list { list-style-type: none; padding: 0; margin: 1rem 0; }
+        .info-list li { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 0.7rem; padding: 0.7rem 0.9rem; }
+        .info-label { font-weight: 600; color: #1e3a8a; }
+        .btn-primary { display: inline-block; margin-top: 1.5rem; text-decoration: none; color: #ffffff; background: linear-gradient(90deg, #2563eb, #1d4ed8); border-radius: 8px; padding: 0.55rem 1rem; font-weight: 600; }
+        .fallback { color: #64748b; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Flight Details: {{ flight_number }}</h2>
+        <p><strong>Departure Date:</strong> {{ departure_date }}</p>
+
+        {% if details %}
+            <ul class="info-list">
+                <li><span class="info-label">Total Plane Capacity:</span> {{ details[0] }}</li>
+                <li><span class="info-label">Seats Booked:</span> {{ details[1] }}</li>
+                <li><span class="info-label">Available Seats:</span> {{ details[2] }}</li>
+            </ul>
+        {% else %}
+            <p class="fallback">Could not retrieve aircraft data for this flight.</p>
+        {% endif %}
+
+        <a class="btn-primary" href="javascript:history.back()">← Back to Results</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f3f6fb; margin: 0; padding: 0; color: #1f2937; }
+        .container { max-width: 900px; margin: 2.5rem auto; padding: 1.6rem; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 24px rgba(15, 23, 42, .12); }
+        h2 { margin-top: 0; color: #0b3a67; }
+        .table-wrapper { overflow-x: auto; margin-top: 1rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 0.75rem 0.9rem; border-bottom: 1px solid #e2e8f0; }
+        th { background: #e0e7ff; color: #1e3a8a; font-weight: 600; }
+        tr:hover { background: #f1f5f9; }
+        .btn-primary { display: inline-block; text-decoration: none; color: #ffffff; background: linear-gradient(90deg, #2563eb, #1d4ed8); border-radius: 8px; padding: 0.5rem .85rem; font-weight: 600; }
+        .btn-secondary { display: inline-block; margin-top: 1rem; text-decoration: none; color: #1d4ed8; border: 1px solid #93c5fd; border-radius: 8px; padding: 0.45rem .8rem; }
+        .empty-state { text-align: center; padding: 1.5rem; color: #475569; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Flights</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight Number</th>
+                        <th>Departure Date</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Departure Time (GMT)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for flight in flights %}
+                    <tr>
+                        <td>{{ flight[0] }}</td>
+                        <td>{{ flight[1] }}</td>
+                        <td>{{ flight[2] }}</td>
+                        <td>{{ flight[3] }}</td>
+                        <td>{{ flight[4] }}</td>
+                        <td><a class="btn-primary" href="/flight/{{ flight[0] }}/{{ flight[1] }}">View Seats</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="empty-state">No flights found for this route and date range.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a class="btn-secondary" href="/">← Back to Search</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f3f6fb; margin: 0; padding: 0; color: #1f2937; }
+        .container { max-width: 600px; margin: 3rem auto; padding: 2rem; background: #ffffff; border-radius: 12px; box-shadow: 0 8px 24px rgba(15, 23, 42, .12); }
+        h2 { margin-bottom: 1.25rem; color: #0b3a67; }
+        .field { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.35rem; font-weight: 600; }
+        input[type='text'], input[type='date'] { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; font-size: 1rem; }
+        input[type='text']:focus, input[type='date']:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, .15); }
+        .btn-submit { margin-top: 1rem; width: 100%; padding: 12px 16px; border: none; border-radius: 8px; background: linear-gradient(90deg, #2563eb, #1d4ed8); color: #ffffff; font-weight: 700; font-size: 1rem; cursor: pointer; transition: transform .12s ease, background .18s ease; }
+        .btn-submit:hover { transform: translateY(-1px); background: linear-gradient(90deg, #1d4ed8, #1e40af); }
+        .note { margin-top: .75rem; font-size: .90rem; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Find Your Next Flight</h2>
+        <p class="note">Enter your route and travel dates to lookup available flights.</p>
+        <form action="/search" method="POST">
+            <div class="field">
+                <label for="origin">Origin Airport Code</label>
+                <input type="text" id="origin" name="origin" required placeholder="e.g., JFK">
+            </div>
+            <div class="field">
+                <label for="dest">Destination Airport Code</label>
+                <input type="text" id="dest" name="dest" required placeholder="e.g., LAX">
+            </div>
+            <div class="field">
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date" name="start_date" required>
+            </div>
+            <div class="field">
+                <label for="end_date">End Date</label>
+                <input type="date" id="end_date" name="end_date" required>
+            </div>
+            <input class="btn-submit" type="submit" value="Search Flights">
+        </form>
+    </div>
+</body>
+</html>
